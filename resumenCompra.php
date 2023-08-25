@@ -29,18 +29,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="buscarProductos.php">Buscar Producto</a>
+                        <a class="nav-link" aria-current="page" href="buscarProductos.php">Buscar Producto <i class="bi bi-node-plus-fill"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestionProductos.php">Gestión Productos</a>
+                        <a class="nav-link active" href="resumenCompra.php">Resumén de compra <i class="bi bi-bag-fill"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="resumenCompra.php">Resumén de compra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="historial.php">Historial de compras</a>
+                        <a class="nav-link" href="historial.php">Historial de compras <i class="bi bi-calendar2-week-fill"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -73,6 +70,7 @@
     <?php
     $contador = 0;
     if (isset($_SESSION['carroCompras'])) {
+        echo '<form action="resumenCompra.php" method="POST">';
         foreach ($_SESSION['carroCompras'] as $key => $producto) {
             if($contador == 0){
                 echo "<table class='table-bordered' border='1'>
@@ -83,26 +81,26 @@
                         <th>Cantidad</th>
                         <th>Total</th>
                         <th></th>
-                    </tr>";
+                    </tr>";                
             }
 
             echo "<tr>";
             echo "<td>{$producto['codigo']}</td>";
             echo "<td>{$producto['nombre']}</td>";            
-            echo "<td>" . '<input type="number" class="precioUnitario" value='. $producto['precio'] . " readonly></td>";
-            echo "<td>" . '<input type="number" class="cantidad" value=1>' . "</td>";
-            echo '<td class="precioTotal">' . $producto['precio'] . "</td>";
+            echo "<td>" . '<input type="number" class="precioUnitario" value='. $producto['precio'] . " readonly></td>";            
+            echo "<td>" . "<input type=\"number\" id=\"cantidad\" class=\"cantidad\" value=". $producto['cantidad'] . " readonly><a class=\"btn btn-success\" href=\"actualizar_cantidad_total_up.php?key=$key\">+</a><a class=\"btn btn-danger\" href=\"actualizar_cantidad_total_down.php?key=$key\">-</a></td>";
+            echo '<td class="precioTotal">' . $producto['total'] . "</td>";
             echo "<td><a class=\"btn btn-danger\" href=\"eliminar_producto.php?key=$key\">Eliminar del carro</a></td>";
             echo "</tr>";
             $contador +=1;
         }
 
         echo "</table>";
+        echo "</form>";
     }
     ?>
-    <br>
-
-    <h2>Total: <span id="total">0</span></h2>
+    <br> 
+    <h2>Total: <span id='total'>$0</span></h2>
 
     <div class="contenedor">
         <div class="botones">
@@ -123,7 +121,7 @@
                 cantidadInput.addEventListener('input', function () {
                     const precioUnitario = parseFloat(precioUnidad[index].value);
                     const cantidad = parseFloat(cantidadInput.value);
-                    const nuevoPrecioTotal = precioUnitario * cantidad;
+                    const nuevoPrecioTotal = precioUnitario * cantidad;                    
                     precioTotales[index].textContent = nuevoPrecioTotal.toFixed(0);
                     recalcularTotal();
                 });
@@ -134,7 +132,7 @@
                 precioTotales.forEach(function (precioTotal) {
                     total += parseFloat(precioTotal.textContent);
                 });
-                totalElement.textContent = "$" + total.toLocaleString();
+                totalElement.textContent = "$" + total.toLocaleString();                
             }
         });
 

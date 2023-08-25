@@ -23,8 +23,10 @@ if (isset($_SESSION['carroCompras']) && !empty($_SESSION['carroCompras'])) {
         $idProducto = intval($producto['codigo']);
         $nombre = mysqli_real_escape_string($conexion, $producto['nombre']);
         $precio = floatval($producto['precio']);
+        $cantidad = intval($producto['cantidad']);
+        $total = intval($producto['total']);
 
-        $consulta = "INSERT INTO productosVendidos (IDFactura, IDProducto, NombreProducto, PrecioProducto, CantidadProducto, Total) VALUES ($IDFactura, $idProducto, '$nombre', $precio, 21312213, 21312213)";
+        $consulta = "INSERT INTO productosVendidos (IDFactura, IDProducto, NombreProducto, PrecioProducto, CantidadProducto, Total) VALUES ($IDFactura, $idProducto, '$nombre', $precio, $cantidad, $total)";
         $resultado = mysqli_query($conexion, $consulta);
 
         if (!$resultado) {

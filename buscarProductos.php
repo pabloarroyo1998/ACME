@@ -29,18 +29,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="buscarProductos.php">Buscar Producto</a>
+                        <a class="nav-link active" aria-current="page" href="buscarProductos.php">Buscar Producto <i class="bi bi-node-plus-fill"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestionProductos.php">Gestión Productos</a>
+                        <a class="nav-link" href="resumenCompra.php">Resumén de compra <i class="bi bi-bag-fill"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="resumenCompra.php">Resumén de compra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="historial.php">Historial de compras</a>
+                        <a class="nav-link" href="historial.php">Historial de compras <i class="bi bi-calendar2-week-fill"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -99,8 +96,8 @@
                 echo "<td>" . $fila['Codigo_producto'] . "</td>";
                 echo "<td>" . $fila['Nombre'] . "</td>";
                 echo "<td>" . $fila['Detalles'] . "</td>";
-                echo "<td> $" . $fila['Precio'] . "</td>";
-                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}\">Agregar al carro</a></td>";
+                echo "<td> $" . $fila['Precio'] . "</td>"; 
+                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad='1'&total={$fila['Precio']}\">Agregar al carro</a></td>";
                 echo "</tr>";
             }
 
@@ -145,7 +142,7 @@
                 echo "<td>" . $fila['Nombre'] . "</td>";
                 echo "<td>" . $fila['Detalles'] . "</td>";
                 echo "<td> $" . $fila['Precio'] . "</td>";
-                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}\">Agregar al carro</a></td>";
+                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad='1'&total={$fila['Precio']}\">Agregar al carro</a></td>";
                 echo "</tr>";
                 $contador += 1;
             }
