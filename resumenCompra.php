@@ -87,7 +87,7 @@
             echo "<tr>";
             echo "<td>{$producto['codigo']}</td>";
             echo "<td>{$producto['nombre']}</td>";            
-            echo "<td>" . '<input type="number" class="precioUnitario" value='. $producto['precio'] . " readonly></td>";            
+            echo "<td>" . '<input type="number" class="precioUnitario" value='. $producto['precio'] . " readonly></td>";                        
             echo "<td>" . "<input type=\"number\" id=\"cantidad\" class=\"cantidad\" value=". $producto['cantidad'] . " readonly><a class=\"btn btn-success\" href=\"actualizar_cantidad_total_up.php?key=$key\">+</a><a class=\"btn btn-danger\" href=\"actualizar_cantidad_total_down.php?key=$key\">-</a></td>";
             echo '<td class="precioTotal">' . $producto['total'] . "</td>";
             echo "<td><a class=\"btn btn-danger\" href=\"eliminar_producto.php?key=$key\">Eliminar del carro</a></td>";

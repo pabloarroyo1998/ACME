@@ -97,7 +97,8 @@
                 echo "<td>" . $fila['Nombre'] . "</td>";
                 echo "<td>" . $fila['Detalles'] . "</td>";
                 echo "<td> $" . $fila['Precio'] . "</td>"; 
-                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad='1'&total={$fila['Precio']}\">Agregar al carro</a></td>";
+                $cantidad = 1;
+                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad=$cantidad&total={$fila['Precio']}\">Agregar al carro</a></td>";
                 echo "</tr>";
             }
 
@@ -142,7 +143,8 @@
                 echo "<td>" . $fila['Nombre'] . "</td>";
                 echo "<td>" . $fila['Detalles'] . "</td>";
                 echo "<td> $" . $fila['Precio'] . "</td>";
-                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad='1'&total={$fila['Precio']}\">Agregar al carro</a></td>";
+                $cantidad = 1;
+                echo "<td><a class=\"btn btn-success\" href=\"agregar_carro.php?producto={$fila['Codigo_producto']}&nombre={$fila['Nombre']}&precio={$fila['Precio']}&cantidad=$cantidad&total={$fila['Precio']}\">Agregar al carro</a></td>";
                 echo "</tr>";
                 $contador += 1;
             }
